@@ -1,6 +1,6 @@
 # zeus — AI App Builder. Full-stack AI app builder
 
-AI App Builder. Full-stack AI app builder. zeus gives you a focused, inspectable implementation of that idea.
+AI App Builder. Full-stack AI app builder.
 
 ## Why zeus
 
