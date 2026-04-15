@@ -1,54 +1,65 @@
-# zeus — AI App Builder. Full-stack AI app builder
+# zeus
 
-AI App Builder. Full-stack AI app builder.
+> AI app builder that generates a *runnable* Next.js app from a prompt — not a toy demo but a real scaffolded codebase with auth, database, deploy configs. Claim the name, watch this space.
 
-## Why zeus
+![status](https://img.shields.io/badge/status-active_planning-blue)
+![license](https://img.shields.io/badge/license-MIT-green)
+![backlog](https://img.shields.io/badge/backlog-see_DESIGN.md-orange)
 
-zeus exists to make this workflow practical. Ai app builder. full-stack ai app builder. It favours a small, inspectable surface over sprawling configuration.
+## What this is
 
-## Features
+v0.dev, Bolt, Lovable generate beautiful UIs but often miss production concerns — auth, migrations, environment configs, deploy pipelines. They optimize for demo wow, not for 'I can run this in staging tomorrow.'
 
-- CLI command `zeus`
-- `ParsedDescription` — exported from `src/zeus/core.py`
-- `GeneratedProject` — exported from `src/zeus/core.py`
-- `AppGenerator` — exported from `src/zeus/core.py`
-- Included test suite
-- Dedicated documentation folder
+**Read the full [DESIGN.md](./DESIGN.md)** for problem statement, user personas, architecture, and roadmap.
 
-## Tech Stack
+## Status
 
-- **Runtime:** Python
-- **Frameworks:** Click
-- **Tooling:** Pydantic, Rich
+**Active planning / pre-alpha.** The design is scoped (see DESIGN.md). Code is minimal — this repo is the home for the first real implementation, not a placeholder.
 
-## How It Works
+## MVP (v0.1) — what ships first
 
-The codebase is organised into `docs/`, `src/`, `tests/`. The primary entry points are `src/zeus/core.py`, `src/zeus/cli.py`, `src/zeus/__init__.py`. `src/zeus/core.py` exposes `ParsedDescription`, `GeneratedProject`, `AppGenerator` — the core types that drive the behaviour. `src/zeus/cli.py` exposes functions like `main`, `generate`, `list_templates`.
+- CLI: `zeus new <prompt>` generates a runnable Next.js app in a new directory
+- Includes: Tailwind, Supabase auth, one example protected route, seed data, deploy.yml
+- Playwright smoke test that verifies auth flow works
+- Generates README with local-dev instructions
 
-## Getting Started
+## Stack
+
+- Python generator core (Claude-powered)
+- Templates: Next.js, FastAPI, Supabase, Clerk, Stripe, Resend
+- Playwright for smoke-test generation
+- Vercel/Railway/Fly deploy configs
+- CLI in Python, optional web UI for non-CLI users
+
+See [DESIGN.md](./DESIGN.md#planned-stack) for complete stack rationale.
+
+## Quick start
 
 ```bash
-pip install -e .
-zeus --help
+git clone https://github.com/MukundaKatta/zeus.git
+cd zeus
+# See DESIGN.md for full architecture
 ```
 
-## Usage
 
-```bash
-zeus --help
-```
+## Roadmap
 
-## Project Structure
+| Version | Focus |
+|---------|-------|
+| v0.1 | MVP — see checklist in [DESIGN.md](./DESIGN.md) |
+| v0.2 | Patch mode — add features to existing repos |
+| v0.3 | Multi-framework (Remix, Astro, SvelteKit) |
 
-```
-zeus/
-├── .env.example
-├── CONTRIBUTING.md
-├── LICENSE
-├── Makefile
-├── README.md
-├── docs/
-├── pyproject.toml
-├── src/
-├── tests/
-```
+Full roadmap in [DESIGN.md](./DESIGN.md#roadmap).
+
+## Contributing
+
+Open an issue if:
+- You'd use this tool and have a specific use case not covered
+- You spot a design flaw in DESIGN.md
+- You want to claim one of the v0.1 checklist items
+
+## See also
+
+- [My other projects](https://github.com/MukundaKatta)
+- [mukunda.dev](https://mukunda-ai.vercel.app)
